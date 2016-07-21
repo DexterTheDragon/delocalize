@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'action_controller'
 
 parameters_classes = [Delocalize::Parameters]
 
@@ -7,6 +8,8 @@ if defined?(ActionController::Parameters)
   ActionController::Parameters.send(:include, Delocalize::ParameterDelocalizing)
   parameters_classes << ActionController::Parameters
 end
+
+puts "Testing parameter classes: #{parameters_classes.inspect}"
 
 parameters_classes.each do |parameters_class|
   describe parameters_class do
@@ -157,7 +160,7 @@ parameters_classes.each do |parameters_class|
       params = parameters_class.new(:parent => { :parent_date => '21. Mai 2004' })
 
       ## Should not throw an error:
-      delocalized_params = params.delocalize({})
+      params.delocalize({})
     end
 
     it "delocalizes arrays" do
