@@ -8,18 +8,7 @@ language: ruby
 cache: bundler
 
 rvm:
-  - 2.4.1
-  - 2.3.4
-  - 2.2.7
   - jruby-9.1.8.0
-  - rbx-2
 
 gemfile:
-  - ci/Gemfile.rails42
-  - ci/Gemfile.rails50
   - ci/Gemfile.rails51
-
-matrix:
-  allow_failures:
-    - rvm: rbx-2
-    - rvm: jruby-9.1.8.0
